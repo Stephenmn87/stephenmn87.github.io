@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Games by Joao</title>
+<meta name="description" content="Little games, vibe coded.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎈%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sky-top:#7fcdf2;--sky-low:#dff4fb;--sun:#fff4c2;--sea:#37b3d6;--sand:#f4dca8;--sand2:#e8c98f;
+  --ink:#1f2d38;--muted:#41535f;--card:#fffdf8;--card-edge:rgba(31,45,56,.08);--btn:#ffd23f;--btn-ink:#1f2d38;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--sky-top:#141a3a;--sky-low:#6a4377;--sun:#f2b8a0;--sea:#1b3f73;--sand:#7a5f66;--sand2:#6a5058;
+    --ink:#f6eefc;--muted:#d9cde8;--card:#2a2150;--card-edge:rgba(255,255,255,.1);color-scheme:dark}
+}
+:root[data-theme="dark"]{--sky-top:#141a3a;--sky-low:#6a4377;--sun:#f2b8a0;--sea:#1b3f73;--sand:#7a5f66;--sand2:#6a5058;
+  --ink:#f6eefc;--muted:#d9cde8;--card:#2a2150;--card-edge:rgba(255,255,255,.1);color-scheme:dark}
+
+*{box-sizing:border-box}
+html{min-height:100%}
+body{margin:0;min-height:100vh;display:flex;flex-direction:column;
+  background:linear-gradient(var(--sky-top),var(--sky-low) 420px) var(--sky-low);
+  color:var(--ink);font-family:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;
+  padding-top:env(safe-area-inset-top,0px)}
+
+header{position:relative;padding:clamp(40px,9vw,88px) 24px clamp(24px,5vw,44px);text-align:center;overflow:hidden}
+.sun{position:absolute;right:max(6%,calc(50% - 360px));top:clamp(18px,4vw,40px);width:clamp(70px,14vw,120px);aspect-ratio:1;border-radius:50%;background:var(--sun);opacity:.9}
+h1{position:relative;margin:0;font-weight:800;font-size:clamp(44px,11vw,88px);line-height:.95;letter-spacing:-.03em}
+.sub{position:relative;margin:14px auto 0;max-width:24em;font-weight:600;font-size:clamp(17px,3.8vw,22px);color:var(--muted)}
+
+main{flex:1;width:100%;max-width:960px;margin:0 auto;padding:8px 20px 56px}
+.grid{display:grid;gap:22px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+
+.tile{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--card-edge);border-radius:22px;overflow:hidden;
+  text-decoration:none;color:inherit;box-shadow:0 6px 18px rgba(20,40,60,.12);transition:transform .18s ease,box-shadow .18s ease}
+.tile:hover,.tile:focus-visible{transform:translateY(-5px);box-shadow:0 14px 28px rgba(20,40,60,.2)}
+.tile:focus-visible{outline:3px solid var(--btn);outline-offset:3px}
+.thumb{display:block;width:100%;aspect-ratio:8/5;background:var(--sky-low)}
+.thumb svg{display:block;width:100%;height:100%}
+.info{display:flex;flex-direction:column;gap:8px;padding:18px 20px 20px;flex:1}
+.info h2{margin:0;font-size:26px;font-weight:800;letter-spacing:-.01em}
+.info p{margin:0;font-weight:600;font-size:16px;line-height:1.4;color:var(--muted);flex:1}
+.play{align-self:flex-start;margin-top:6px;background:var(--btn);color:var(--btn-ink);font-weight:800;font-size:16px;padding:9px 20px;border-radius:999px}
+
+.soon{display:flex;align-items:center;justify-content:center;min-height:200px;padding:24px;text-align:center;border:3px dashed var(--muted);border-radius:22px;
+  color:var(--muted);font-weight:800;font-size:20px;opacity:.7}
+
+footer{position:relative;background:var(--sand);padding:34px 20px calc(30px + env(safe-area-inset-bottom,0px));text-align:center;
+  font-weight:600;font-size:15px;color:var(--ink);border-top:5px solid rgba(255,255,255,.85)}
+footer::before{content:"";position:absolute;left:0;right:0;top:-5px;height:5px}
+
+.bob{animation:bob 3.2s ease-in-out infinite;transform-origin:160px 120px}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-7px) rotate(2deg)}}
+.tile:hover .bob{animation-duration:1.6s}
+@media (prefers-reduced-motion:reduce){.bob{animation:none}.tile{transition:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="sun" aria-hidden="true"></div>
+  <h1>Games by Joao</h1>
+  <p class="sub">Little games, vibe coded. Best played on a phone.</p>
+</header>
+
+<main>
+  <div class="grid">
+
+    <!-- ===== GAME TILE: Keepy Uppy ===== -->
+    <a class="tile" href="keepy-uppy/">
+      <span class="thumb" aria-hidden="true">
+        <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="sg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" style="stop-color:var(--sky-top)"/>
+              <stop offset="1" style="stop-color:var(--sky-low)"/>
+            </linearGradient>
+          </defs>
+          <rect width="320" height="200" fill="url(#sg)"/>
+          <circle cx="255" cy="62" r="26" style="fill:var(--sun)" opacity=".9"/>
+          <rect y="118" width="320" height="36" style="fill:var(--sea)"/>
+          <path d="M0 128 q20-5 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0" fill="none" stroke="#fff" stroke-opacity=".4" stroke-width="2"/>
+          <path d="M0 154 q20-5 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0" fill="none" stroke="#fff" stroke-opacity=".85" stroke-width="4"/>
+          <rect y="154" width="320" height="46" style="fill:var(--sand)"/>
+          <ellipse cx="70" cy="182" rx="80" ry="8" style="fill:var(--sand2)"/>
+          <ellipse cx="160" cy="166" rx="22" ry="5" fill="#000" opacity=".18"/>
+          <g class="bob">
+            <g transform="translate(160 68)">
+              <path d="M0 40 C4 56 -6 70 2 88" fill="none" stroke="#3c3c3c" stroke-opacity=".65" stroke-width="1.6"/>
+              <polygon points="0,38 -4.5,45 4.5,45" fill="#e5342b"/>
+              <path d="M0 36 C-37.5 16 -27.5 -36 0 -36 C27.5 -36 37.5 16 0 36Z" fill="#e5342b" stroke="#000" stroke-opacity=".18" stroke-width="1.4"/>
+              <ellipse cx="-13" cy="-14" rx="4.6" ry="9.5" transform="rotate(28 -13 -14)" fill="#fff" fill-opacity=".42"/>
+            </g>
+          </g>
+        </svg>
+      </span>
+      <span class="info">
+        <h2>Keepy Uppy</h2>
+        <p>Swipe to keep a balloon in the air. Dodge seagulls and crabs, and pop bubbles for boosts.</p>
+        <span class="play">Play</span>
+      </span>
+    </a>
+
+    <!--
+      ===== TEMPLATE FOR A NEW GAME (copy, paste above the "coming soon" tile, edit) =====
+      Folder: put the game at  your-game-name/index.html  next to this file.
+
+      <a class="tile" href="your-game-name/">
+        <span class="thumb" aria-hidden="true"> ...an <svg> or <img src="your-game-name/thumb.png" alt=""> ... </span>
+        <span class="info">
+          <h2>Game Title</h2>
+          <p>One-line description.</p>
+          <span class="play">Play</span>
+        </span>
+      </a>
+    -->
+
+    <!-- Placeholder tile. Delete this whole div if you don't want it. -->
+    <div class="soon">Next game coming soon…</div>
+
+  </div>
+</main>
+
+<footer>Vibe coded with Claude</footer>
+
+</body>
+</html>
