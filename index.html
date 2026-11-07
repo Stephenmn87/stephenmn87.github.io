@@ -58,7 +58,10 @@ footer::before{content:"";position:absolute;left:0;right:0;top:-5px;height:5px}
 .bob{animation:bob 3.2s ease-in-out infinite;transform-origin:160px 120px}
 @keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-7px) rotate(2deg)}}
 .tile:hover .bob{animation-duration:1.6s}
-@media (prefers-reduced-motion:reduce){.bob{animation:none}.tile{transition:none}}
+.fk-sails{animation:fkspin 12s linear infinite;transform-origin:262px 98px}
+@keyframes fkspin{to{transform:rotate(360deg)}}
+.tile:hover .fk-sails{animation-duration:5s}
+@media (prefers-reduced-motion:reduce){.bob,.fk-sails{animation:none}.tile{transition:none}}
 </style>
 </head>
 <body>
@@ -103,6 +106,74 @@ footer::before{content:"";position:absolute;left:0;right:0;top:-5px;height:5px}
       <span class="info">
         <h2>Keepy Uppy</h2>
         <p>Swipe to keep a balloon in the air. Dodge seagulls and crabs, and pop bubbles for boosts.</p>
+        <span class="play">Play</span>
+      </span>
+    </a>
+
+    <!-- ===== GAME TILE: Farm Kit ===== -->
+    <a class="tile" href="farm-kit/">
+      <span class="thumb" aria-hidden="true">
+        <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <pattern id="fk-furrow" width="16" height="16" patternUnits="userSpaceOnUse">
+              <rect width="8" height="16" fill="#9a6736"/><rect x="8" width="8" height="16" fill="#7d4f27"/>
+            </pattern>
+            <g id="fk-tree">
+              <circle r="11" fill="#2e6b2a"/><circle cx="-2" cy="-2" r="8" fill="#3f8a37"/><circle cx="-4" cy="-4" r="4" fill="#58a84a"/>
+            </g>
+          </defs>
+          <rect width="320" height="200" fill="#6aa84f"/>
+          <rect y="120" width="320" height="80" fill="#7bb85c"/>
+          <!-- field -->
+          <rect x="26" y="22" width="268" height="98" rx="6" fill="#6b4423"/>
+          <rect x="29" y="25" width="262" height="92" rx="4" fill="url(#fk-furrow)"/>
+          <rect x="29" y="68" width="150" height="24" fill="#4e2f15"/>
+          <g fill="#5fae4a"><circle cx="46" cy="80" r="3"/><circle cx="62" cy="80" r="3"/><circle cx="78" cy="80" r="3"/><circle cx="94" cy="80" r="3"/><circle cx="110" cy="80" r="3"/></g>
+          <!-- trees -->
+          <use href="#fk-tree" x="16" y="10"/><use href="#fk-tree" x="48" y="9"/><use href="#fk-tree" x="80" y="11"/><use href="#fk-tree" x="112" y="9"/><use href="#fk-tree" x="144" y="10"/><use href="#fk-tree" x="176" y="9"/><use href="#fk-tree" x="208" y="11"/><use href="#fk-tree" x="240" y="9"/><use href="#fk-tree" x="272" y="10"/><use href="#fk-tree" x="304" y="11"/>
+          <use href="#fk-tree" x="10" y="44"/><use href="#fk-tree" x="12" y="78"/><use href="#fk-tree" x="310" y="46"/><use href="#fk-tree" x="308" y="80"/>
+          <!-- fence, canal, roads -->
+          <path d="M16 126H138M182 126H304" stroke="#d8c39a" stroke-width="2.5"/>
+          <rect x="140" y="124" width="40" height="76" fill="#c9b88f"/>
+          <rect y="154" width="320" height="16" fill="#c9b88f"/>
+          <rect y="132" width="320" height="14" fill="#4aa3d8"/>
+          <g fill="#fff" opacity=".4"><rect x="20" y="138" width="12" height="2"/><rect x="70" y="140" width="12" height="2"/><rect x="230" y="138" width="12" height="2"/><rect x="280" y="140" width="12" height="2"/></g>
+          <rect x="140" y="129" width="40" height="20" fill="#8b6b43"/>
+          <rect x="137" y="129" width="4" height="20" fill="#f4efe4"/><rect x="179" y="129" width="4" height="20" fill="#f4efe4"/>
+          <!-- buildings -->
+          <g stroke-width="2">
+            <rect x="34" y="174" width="64" height="24" fill="#2f6f8f" stroke="#17394d"/>
+            <rect x="128" y="174" width="64" height="24" fill="#b23a2e" stroke="#6e1f18"/>
+            <rect x="222" y="174" width="64" height="24" fill="#c77d2e" stroke="#7a4512"/>
+          </g>
+          <!-- tractor + tiller -->
+          <g transform="translate(150 80)">
+            <rect x="-34" y="-9" width="8" height="18" rx="2" fill="#546e7a"/>
+            <rect x="-26" y="-3" width="8" height="6" fill="#455a64"/>
+            <rect x="-20" y="-15" width="16" height="6" rx="2" fill="#1c1c1c"/><rect x="-20" y="9" width="16" height="6" rx="2" fill="#1c1c1c"/>
+            <rect x="-16" y="-9" width="24" height="18" rx="3" fill="#43a047"/>
+            <rect x="-12" y="-6" width="12" height="12" rx="2" fill="#e8e8e8"/>
+            <rect x="8" y="-6" width="20" height="12" rx="3" fill="#2e7d32"/>
+            <rect x="14" y="-12" width="9" height="4" rx="1.5" fill="#1c1c1c"/><rect x="14" y="8" width="9" height="4" rx="1.5" fill="#1c1c1c"/>
+          </g>
+          <!-- windmill -->
+          <circle cx="262" cy="98" r="16" fill="#9a9a86" stroke="#6d6d5c" stroke-width="2"/>
+          <circle cx="262" cy="98" r="9" fill="#f1ece0"/><circle cx="262" cy="98" r="6.5" fill="#b23a2e"/>
+          <g class="fk-sails">
+            <g stroke="#5d4037" stroke-width="1">
+              <rect x="268" y="98" width="22" height="6" fill="#f5eedc"/>
+              <rect x="268" y="98" width="22" height="6" fill="#f5eedc" transform="rotate(90 262 98)"/>
+              <rect x="268" y="98" width="22" height="6" fill="#f5eedc" transform="rotate(180 262 98)"/>
+              <rect x="268" y="98" width="22" height="6" fill="#f5eedc" transform="rotate(270 262 98)"/>
+            </g>
+            <path d="M262 98h30M262 98v30M262 98h-30M262 98v-30" stroke="#5d4037" stroke-width="2.4"/>
+            <circle cx="262" cy="98" r="2.6" fill="#5d4037"/>
+          </g>
+        </svg>
+      </span>
+      <span class="info">
+        <h2>Farm Kit</h2>
+        <p>Drive a tractor around your farm. Till the soil, plant potatoes and pumpkins, and harvest them as the seasons change.</p>
         <span class="play">Play</span>
       </span>
     </a>
